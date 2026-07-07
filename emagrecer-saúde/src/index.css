@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Lora", Georgia, serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-brand-emerald: #10B981;
+  --color-brand-sunset: #FF8C42;
+  --color-brand-ocean: #3B82F6;
+  --color-brand-cream: #F8FAF5;
+  --color-brand-forest: #064E3B;
+}
+
+/* Custom print layouts for A4 print matching */
+@media print {
+  body {
+    background-color: white !important;
+    color: black !important;
+    font-size: 12pt !important;
+  }
+  
+  /* Hide all interactive app chrome, selectors, calculators when printing */
+  #app-chrome-header,
+  #app-chrome-tabs,
+  #book-reader-container > div:first-child, /* TOC sidebar */
+  #book-reader-container > div:last-child > div:first-child, /* Reader Topbar */
+  #book-reader-container > div:last-child > div:last-child, /* Reader Bottombar */
+  #calorie-tool-container,
+  #plate-tool-container,
+  #workout-tool-container,
+  #progress-tool-container,
+  button,
+  footer {
+    display: none !important;
+  }
+
+  /* Make reading page full width and remove scrollbars */
+  #book-reader-container {
+    border: none !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  #book-reader-container > div:last-child {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* A4 paper size styles */
+  .max-w-\[700px\] {
+    max-w: 100% !important;
+    width: 100% !important;
+    min-height: auto !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background-color: transparent !important;
+  }
+  
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+  
+  p, blockquote, li {
+    page-break-inside: avoid;
+  }
+}

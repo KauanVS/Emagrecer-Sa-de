@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: portal-admin-app
+    env: node
+    plan: free
+    rootDir: .
+    buildCommand: sed -i 's/provider = "sqlite"/provider = "postgresql"/g' prisma/schema.prisma && npm install && prisma generate && vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs
+    startCommand: npx prisma db push --accept-data-loss && node dist/server.cjs
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_REFRESH_SECRET
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false

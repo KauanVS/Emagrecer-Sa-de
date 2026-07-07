@@ -1,0 +1,6 @@
+{
+  "name": "Emagrecer Saúde",
+  "description": "O guia prático para perder peso com saúde, equilíbrio e consistência, incluindo e-reader interativo, cardápios e calculadora de déficit calórico.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
